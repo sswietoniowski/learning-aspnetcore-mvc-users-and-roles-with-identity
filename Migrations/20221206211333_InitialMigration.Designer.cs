@@ -12,8 +12,8 @@ using learning_aspnetcore_mvc_users_and_roles_with_identity.DataAccess;
 namespace learning_aspnetcore_mvc_users_and_roles_with_identity.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221206203504_InititialMigration")]
-    partial class InititialMigration
+    [Migration("20221206211333_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

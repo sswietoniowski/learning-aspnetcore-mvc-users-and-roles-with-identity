@@ -6,9 +6,9 @@ namespace learning_aspnetcore_mvc_users_and_roles_with_identity.DataAccess;
 
 public class AppDbContext : IdentityDbContext<User, Role, int>
 {
+    public override DbSet<User> Users => Set<User>();
+    public override DbSet<Role> Roles => Set<Role>();
     public DbSet<Order> Orders => Set<Order>();
-    public DbSet<User> Users => Set<User>();
-    public DbSet<Role> Roles => Set<Role>();
 
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {

@@ -8,7 +8,7 @@ public static class SeedDatabase
 {
     private class RoleDto
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
     }
 
     private class UserDto
@@ -48,7 +48,6 @@ public static class SeedDatabase
     {
         new Order
         {
-            Id = 1,
             Product = "Product 1",
             Quantity = 1,
             Price = 1.0m,
@@ -56,7 +55,6 @@ public static class SeedDatabase
         },
         new Order
         {
-            Id = 2,
             Product = "Product 2",
             Quantity = 2,
             Price = 2.0m,
@@ -131,16 +129,6 @@ public static class SeedDatabase
 
     private static async Task SeedOrdersAsync(this AppDbContext context)
     {
-        async Task AddNewOrder(User user1)
-        {
-            foreach (var order in Orders)
-            {
-                order.UserId = user1.Id;
-
-                await context.Orders.AddAsync(order);
-            }
-        }
-
         var user = await context.Users.FirstOrDefaultAsync(u => u.UserName == "jdoe");
 
         if (user == null)
@@ -149,6 +137,12 @@ public static class SeedDatabase
         if (context.Orders.Any())
             return;
 
-        await AddNewOrder(user);
+        foreach (var order in Orders)
+        {
+            order.UserId = user.Id;
+
+            await context.Orders.AddAsync(order);
+            await context.SaveChangesAsync();
+        }
     }
 }
