@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "learning-aspnetcore-mvc-users-and-roles-with-identity", "learning-aspnetcore-mvc-users-and-roles-with-identity.csproj", "{F17DE3B3-4CE3-4B23-8903-7B691B05FB36}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F17DE3B3-4CE3-4B23-8903-7B691B05FB36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F17DE3B3-4CE3-4B23-8903-7B691B05FB36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F17DE3B3-4CE3-4B23-8903-7B691B05FB36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F17DE3B3-4CE3-4B23-8903-7B691B05FB36}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1E807B9E-B069-4A3D-B7E2-3F9DEC0E2082}
+	EndGlobalSection
+EndGlobal
