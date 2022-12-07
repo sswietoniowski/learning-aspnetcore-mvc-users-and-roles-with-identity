@@ -21,4 +21,4 @@ Other useful resources (if you want to tweak your UI a little bit :-)):
 - [Use LibMan with ASP.NET Core in Visual Studio](https://learn.microsoft.com/en-us/aspnet/core/client-side/libman/libman-vs?view=aspnetcore-7.0), 
 - [How to Install Bootstrap Package in ASP.NET Core Application in Visual Studio](https://www.yogihosting.com/install-bootstrap-aspnet-core/).
 
-If you want to test that you can register as a new user (with an e-mail verification), you might use [Nada](https://getnada.com/).
+If you want to test that you can register as a new user (with an e-mail verification), you might use [Nada](https://getnada.com/). BTW sample code is not sending emails you have to implement that by yourself :-).
