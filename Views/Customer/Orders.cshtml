@@ -5,7 +5,7 @@
 }
 
 <div class="text-center">
-    <table class="table">
+    <table class="table table-striped table-bordered table-hover">
         <thead class="thead-dark">
         <tr>
             <th scope="col">Product</th>
@@ -20,7 +20,7 @@
         {
             <tbody>
             <tr>
-                <td scope="col">@order.ProductName</td>
+                <td scope="row">@order.ProductName</td>
                 <td>@order.Quantity</td>
                 <td>@order.Price</td>
                 <td>@order.Total</td>
