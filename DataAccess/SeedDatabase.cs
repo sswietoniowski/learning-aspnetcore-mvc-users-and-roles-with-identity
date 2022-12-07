@@ -94,7 +94,10 @@ public static class SeedDatabase
                 User newUser = new()
                 {
                     UserName = userDto.UserName,
-                    Email = userDto.Email
+                    Email = userDto.Email,
+                    EmailConfirmed = true,
+                    PhoneNumber = "000-000-0000",
+                    PhoneNumberConfirmed = true
                 };
 
                 IdentityResult result = await userManager.CreateAsync(newUser, userDto.Password);
