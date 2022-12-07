@@ -22,8 +22,8 @@ namespace learning_aspnetcore_mvc_users_and_logins.Controllers
         public IActionResult Orders()
         {
             var userName = User.FindFirstValue(ClaimTypes.Name);
-            var roleName = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value ?? throw new Exception("Role not found");
             var customer = _dbContext.Users.FirstOrDefault(u => u.UserName == userName) ?? throw new Exception("User not found");
+            var roleName = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role && c.Value == "Customer")?.Value ?? throw new Exception("Role not found");
 
             var orders = _dbContext.Orders
                 .Where(o => o.UserId == customer.Id)
