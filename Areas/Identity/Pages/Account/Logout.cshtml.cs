@@ -2,14 +2,10 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
-using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using learning_aspnetcore_mvc_users_and_roles_with_identity.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 
 namespace learning_aspnetcore_mvc_users_and_roles_with_identity.Areas.Identity.Pages.Account
 {
