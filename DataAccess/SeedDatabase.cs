@@ -86,9 +86,8 @@ public static class SeedDatabase
 
     private static async Task SeedUsersAsync(this UserManager<User> userManager)
     {
-        User CreateUserFromTemplate(UserDto userDto)
-        {
-            return new()
+        User CreateUserFromTemplate(UserDto userDto) =>
+            new()
             {
                 UserName = userDto.UserName,
                 Email = userDto.Email,
@@ -96,7 +95,6 @@ public static class SeedDatabase
                 PhoneNumber = "000-000-0000",
                 PhoneNumberConfirmed = true
             };
-        }
 
         async Task AddNewUser(UserDto userDto)
         {
