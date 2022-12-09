@@ -24,7 +24,7 @@ public class CustomerController : Controller
         var userName = User.FindFirstValue(ClaimTypes.Name);
         var customer = _dbContext.Users.FirstOrDefault(u => u.UserName == userName) 
                        ?? throw new Exception("User not found");
-        var roleName = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role && c.Value == "Customer")?.Value 
+        var roleName = User.Claims.FirstOrDefault(c => c is {Type: ClaimTypes.Role, Value: "Customer"})?.Value 
                        ?? throw new Exception("Role not found");
 
         var orders = _dbContext.Orders
