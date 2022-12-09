@@ -86,18 +86,23 @@ public static class SeedDatabase
 
     private static async Task SeedUsersAsync(this UserManager<User> userManager)
     {
+        User CreateUserFromTemplate(UserDto userDto)
+        {
+            return new()
+            {
+                UserName = userDto.UserName,
+                Email = userDto.Email,
+                EmailConfirmed = true,
+                PhoneNumber = "000-000-0000",
+                PhoneNumberConfirmed = true
+            };
+        }
+
         async Task AddNewUser(UserDto userDto)
         {
             if (await userManager.FindByNameAsync(userDto.UserName) == null)
             {
-                User newUser = new()
-                {
-                    UserName = userDto.UserName,
-                    Email = userDto.Email,
-                    EmailConfirmed = true,
-                    PhoneNumber = "000-000-0000",
-                    PhoneNumberConfirmed = true
-                };
+                User newUser = CreateUserFromTemplate(userDto);
 
                 IdentityResult result = await userManager.CreateAsync(newUser, userDto.Password);
                 if (result.Succeeded)
@@ -131,6 +136,14 @@ public static class SeedDatabase
 
     private static async Task SeedOrdersAsync(this AppDbContext context)
     {
+        async Task AddOrderForUser(Order order, User user)
+        {
+            order.UserId = user.Id;
+
+            await context.Orders.AddAsync(order);
+            await context.SaveChangesAsync();
+        }
+
         var user = await context.Users.FirstOrDefaultAsync(u => u.UserName == "jdoe");
 
         if (user == null)
@@ -141,10 +154,7 @@ public static class SeedDatabase
 
         foreach (var order in Orders)
         {
-            order.UserId = user.Id;
-
-            await context.Orders.AddAsync(order);
-            await context.SaveChangesAsync();
+            await AddOrderForUser(order, user);
         }
     }
 }
