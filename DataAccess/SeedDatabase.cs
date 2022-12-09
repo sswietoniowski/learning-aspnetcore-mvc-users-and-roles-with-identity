@@ -62,23 +62,22 @@ public static class SeedDatabase
         }
     };
 
+    private static T GetService<T>(this IApplicationBuilder app) where T : notnull =>
+        app.ApplicationServices
+            .CreateScope().ServiceProvider
+            .GetRequiredService<T>();
+
     public static async Task SeedAsync(this IApplicationBuilder app)
     {
-        var context = app.ApplicationServices
-            .CreateScope().ServiceProvider
-            .GetRequiredService<AppDbContext>();
+        var context = app.GetService<AppDbContext>();
 
         if ((await context.Database.GetPendingMigrationsAsync()).Any())
         {
             await context.Database.MigrateAsync();
         }
 
-        var userManager = app.ApplicationServices
-            .CreateScope().ServiceProvider
-            .GetRequiredService<UserManager<User>>();
-        var roleManager = app.ApplicationServices
-            .CreateScope().ServiceProvider
-            .GetRequiredService<RoleManager<Role>>();
+        var userManager = app.GetService<UserManager<User>>();
+        var roleManager = app.GetService<RoleManager<Role>>();
 
         await roleManager.SeedRolesAsync();
         await userManager.SeedUsersAsync();
