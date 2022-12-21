@@ -1,6 +1,8 @@
 using learning_aspnetcore_mvc_users_and_roles_with_identity.DataAccess;
 using learning_aspnetcore_mvc_users_and_roles_with_identity.Entities;
+using learning_aspnetcore_mvc_users_and_roles_with_identity.Services;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +25,8 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.LogoutPath = $"/Identity/Account/Logout";
     options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
 });
+
+builder.Services.AddSingleton<IEmailSender, DummyEmailSender>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();

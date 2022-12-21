@@ -15,8 +15,8 @@ public class CustomerController : Controller
 
     public CustomerController(ILogger<CustomerController> logger, AppDbContext dbContext)
     {
-        _logger = logger;
-        _dbContext = dbContext;
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
     }
 
     public IActionResult Orders()
